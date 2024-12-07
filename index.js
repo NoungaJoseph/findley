@@ -1,10 +1,13 @@
 const express = require('express');
 const morgan = require('morgan');
+
+const userRouter = require('./routes/user.route');
 require('dotenv').config(); // Load environment variables
 require('./lib/dbConnect'); // Connect to MongoDB
 
 const app = express();
 app.use(morgan('dev'));
+app.use('/users', userRouter);
 
 // Set view engine and views directory
 app.set('views', './views');
